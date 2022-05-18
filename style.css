@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+.background {
+    background-image: url("diceimg/dices.jpg");
+    background-attachment:fixed;
+    background-size: 100% 100%;
+    opacity: 0.5;
+    width:100%;
+    height:fit-content;
+    margin:0;
+    padding: 125px 
+}
+
+.container {
+    background-color: black;
+    opacity: 1.0;
+    width: 60%;
+    height: 300px;
+    margin:auto;
+    text-align: center;
+    color:white;
+}
