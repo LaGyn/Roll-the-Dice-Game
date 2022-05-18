@@ -5,16 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smokum&display=swap" rel="stylesheet"> 
     <title>Throw dice</title>
 </head>
 <body>
-    <div class="background">
-        <div class="container">
-            <h1>Dice</h1>
-
-        </div>
+    
+    <div class="container">
+        <h1>Throw Dice Game</h1>
+        <canvas id="gameArea">
+        </canvas>
+        <form name="gameForm" action="#">
+                <div class="row">
+                    <label for="dice">With how many dice do you want to play?</label>
+                    <input type="radio" id="oneDice" name="dice" value="one">
+                    <label for="one">One</label>
+                    <input type="radio" id="twoDice" name="dice" value="two">
+                    <label for="two">Two</label>
+                </div>
+                <div class="row">
+                    <label for="players">How many players?</label>
+                    <input type="radio" id="twoPlay" name="players" value="two">
+                    <label for="two">Two</label>
+                    <input type="radio" id="threePlay" name="players" value="three">
+                    <label for="three">Three</label>
+                    <input type="radio" id="fourPlay" name="players" value="four">
+                    <label for="four">Four</label>
+                    <input type="radio" id="fivePlay" name="players" value="five">
+                    <label for="five">Five</label>
+                </div>
+                <div class="row">
+                    <label for="name">Player:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="row">
+                    <label for="name">Player:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="row">
+                    <label for="name">Player:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="row">
+                    <label for="name">Player:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="row">
+                    <label for="name">Player:</label>
+                    <input type="text" id="name" name="name">
+                </div>
         
+                
+        </form>
     </div>
+        
     <script src="script.js"></script>
 </body>
 </html>

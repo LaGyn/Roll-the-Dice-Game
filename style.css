@@ -2,25 +2,31 @@
     box-sizing: border-box;
 }
 
-
-
-.background {
-    background-image: url("diceimg/dices.jpg");
+body {
+    background-image: url("diceimg/background.jpg");
     background-attachment:fixed;
     background-size: 100% 100%;
-    opacity: 0.5;
-    width:100%;
-    height:fit-content;
     margin:0;
-    padding: 125px 
+    
 }
 
-.container {
-    background-color: black;
-    opacity: 1.0;
-    width: 60%;
-    height: 300px;
-    margin:auto;
+canvas {
+    opacity: 0.1;
+}
+
+h1 {
+    font-family: 'Smokum', cursive;
+    font-size: 70px;
+    color:rgb(102, 27, 27);
     text-align: center;
-    color:white;
+    letter-spacing: 1px;
+}
+
+form {
+    color:beige;
+    font-family: serif;
+    font-size: 20px;
+    float:right;
+    margin-top: 300px;
+    margin-right: 20px;
 }
