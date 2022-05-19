@@ -1,0 +1,4 @@
+-pelin aloitus modal komponentilla: 
+    Kysytään monta noppaa otetaan käyttöön, montako pelaajaa ja heidän nimet
+    Eli pitää olla jokin aloitus nappi.
+-Nappi joka arpoo nopat.
