@@ -6,53 +6,90 @@ body {
     background-image: url("diceimg/background.jpg");
     background-attachment:fixed;
     background-size: 100% 100%;
-    margin:0;
-    
-}
-
-canvas {
-    
-   
+    margin:0; 
 }
 
 h1 {
     font-family: 'Smokum', cursive;
     font-size: 70px;
-    color:rgb(102, 27, 27);
+    color:rgb(88, 17, 17);
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
+}
+
+.button {
+    margin:auto;
+    width:fit-content;
+}
+
+button {
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    background-color: rgb(34, 132, 39);
+    color:white;
+    border: 1px solid rgb(100, 97, 97);
+    border-radius: 4px;
+    padding: 15px;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.5), 0 17px 50px 0 rgba(0,0,0,0.5);
+}
+
+/* Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content */
+.modal-content {
+    background-color: #f6e7c3;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 40%;
 }
 
 form {
-    color:beige;
-    font-family: serif;
+    font-family: 'Special Elite', cursive;
     font-size: 20px;
-    
-    margin-right: 20px;
+    margin: 30px;
 }
 
-#first {
-    position:absolute;
-    bottom:30px;
-    float:right;
-    padding-left: 50px;
+.row {
+    padding-bottom: 15px;
 }
 
-#middle {
-   
-    
-    bottom:30px;
+.dices {
+    margin: auto;
+    width: fit-content;
+    padding: 40px 0;
 }
 
-#last {
-    position:absolute;
-    right: 0;
-    bottom:30px;
-    float:right;
-    padding-right: 50px;
+.dice {
+    margin: auto;
+    width: fit-content;
+    padding: 40px 0;
 }
 
 img {
-    width:20%;
-    height:20%;
+    margin: 30px;
+}
+
+.results {
+    float:right;
+    font-family: 'Special Elite', cursive;
+    color:white;
+    text-decoration: solid;
+    margin-right: 20px;
 }

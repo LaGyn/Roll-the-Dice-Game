@@ -7,61 +7,90 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Smokum&display=swap" rel="stylesheet"> 
-    <title>Throw dice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Smokum&family=Special+Elite&display=swap" rel="stylesheet"> 
+    <title>Roll the dice</title>
 </head>
 <body>
     
     <div class="container">
-        <h1>Throw Dice Game</h1>
-        <canvas id="gameArea">
-            
-        </canvas>
-        <form name="gameForm" action="#">
-                <div id="first" class="col-1">
-                    <label for="dice">With how many dice do you want to play?</label><br>
-                    <input type="radio" id="oneDice" name="dice" value="one">
-                    <label for="one">One</label><br>
-                    <input type="radio" id="twoDice" name="dice" value="two">
-                    <label for="two">Two</label>
+        <h1>Roll the Dice Game</h1>
+
+        <!--Aloita peli: modaaliin-->
+        <div class="button">
+            <button id="startbtn">Start</button>
+        </div>
+        
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+
+                <form name="gameForm">
+                    <div class="row">
+                        <label for="dice">With how many dice do you want to play?</label><br>
+                        <input type="radio" id="oneDice" name="dice" value="one">
+                        <label for="one">One</label><br>
+                        <input type="radio" id="twoDice" name="dice" value="two">
+                        <label for="two">Two</label>
+                    </div>
+                    <div class="row">
+                        <label for="players">How many players?</label><br>
+                        <input type="radio" id="twoPlay" name="players" value="two">
+                        <label for="two">Two</label><br>
+                        <input type="radio" id="threePlay" name="players" value="three">
+                        <label for="three">Three</label><br>
+                        <input type="radio" id="fourPlay" name="players" value="four">
+                        <label for="four">Four</label><br>
+                        <input type="radio" id="fivePlay" name="players" value="five">
+                        <label for="five">Five</label>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <label for="name">Player 1:</label>
+                            <input type="text" id="name1" name="name">
+                        </div>
+                        <div class="row">
+                            <label for="name">Player 2:</label>
+                            <input type="text" id="name2" name="name">
+                        </div> 
+                        <div class="row">
+                            <label for="name">Player 3:</label>
+                            <input type="text" id="name3" name="name">
+                        </div>
+                        <div class="row">
+                            <label for="name">Player 4:</label>
+                            <input type="text" id="name4" name="name">
+                        </div>
+                        <div class="row">
+                            <label for="name">Player 5:</label>
+                            <input type="text" id="name5" name="name">
+                        </div>
+                    </div>
+                </form>
+
+                <div class="button">
+                    <button id="closeModal">Start playing!</button>
                 </div>
-                <div id="middle" class="col-2">
-                    <label for="players">How many players?</label><br>
-                    <input type="radio" id="twoPlay" name="players" value="two">
-                    <label for="two">Two</label><br>
-                    <input type="radio" id="threePlay" name="players" value="three">
-                    <label for="three">Three</label><br>
-                    <input type="radio" id="fourPlay" name="players" value="four">
-                    <label for="four">Four</label><br>
-                    <input type="radio" id="fivePlay" name="players" value="five">
-                    <label for="five">Five</label>
-                </div>
-                <div id="last" class="col-3">
-                    <div class="row">
-                        <label for="name">Player:</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-                    <div class="row">
-                        <label for="name">Player:</label>
-                        <input type="text" id="name" name="name">
-                    </div> 
-                    <div class="row">
-                        <label for="name">Player:</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-                    <div class="row">
-                        <label for="name">Player:</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-                    <div class="row">
-                        <label for="name">Player:</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-                </div>
-        </form>
+            </div>
+        </div>
+
+        <!--<canvas id="gameArea"></canvas>-->
+
+        <div class="dice" style="display:block">
+            <img id="dice1" src="diceimg/dice1.png" alt="Dice number one">
+        </div>
+
         <div class="dices" style="display:none">
-            <img id="dice1" src="diceimg/dice1.png" alt="Dice number one"><!--Huom imgeehen id jotta kuva saadaan canvasille-->
+            <img id="dice1" src="diceimg/dice1.png" alt="Dice number one">
             <img id="dice2" src="diceimg/dice2.png" alt="Dice number two">
+        </div>
+
+        <div class="button">
+            <button id="roll" onclick="arpoo();">Play</button>
+        </div>
+        
+        <div class="results">
+            <h3>Player 1: </h3>
+            <h3>Player 2: </h3>
         </div>
     </div>
         
