@@ -73,25 +73,26 @@
             </div>
         </div>
 
-        <!--<canvas id="gameArea"></canvas>-->
-
-        <div class="dice" style="display:block">
-            <img id="dice1" src="diceimg/dice1.png" alt="Dice number one">
+        <!-- Nopat -->
+        <div id="dice" style="display:none">
+            <img id="dice3" src="diceimg/dice2.png" alt="Dice number one">
         </div>
 
-        <div class="dices" style="display:none">
-            <img id="dice1" src="diceimg/dice1.png" alt="Dice number one">
-            <img id="dice2" src="diceimg/dice2.png" alt="Dice number two">
+        <div id="dices" style="display:block">
+            <img id="dice1" src="diceimg/dice2.png" alt="Dice number one">
+            <img id="dice2" src="diceimg/dice3.png" alt="Dice number two">
         </div>
 
+        <!-- Play-nappi -->
         <div class="button">
             <button id="roll" onclick="arpoo();">Play</button>
         </div>
         
+        <!-- Pelaaja lista -->
         <div class="results">
-            <h3>Player 1: </h3>
-            <h3>Player 2: </h3>
+            <h3 id="results"></h3>
         </div>
+        
     </div>
         
     <script src="script.js"></script>

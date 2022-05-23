@@ -36,23 +36,16 @@ let play = document.getElementById("roll");
 
 let img1 = document.getElementById("dice1");
 let img2 = document.getElementById("dice2");
-/*let img3 = document.getElementById("dice3.png");
-let img4 = document.getElementById("dice5.png");
-let img6 = document.getElementById("dice6.png");*/
+let img3 = document.getElementById("dice3");
 
 let area1 = document.getElementById("dice");
 let area2 = document.getElementById("dices");
 
 const images = ['dice1.png', 'dice2.png', 'dice3.png', 'dice4.png', 'dice5.png', 'dice6.png'];
-const dices = [0, 1];
+//const dices = [0, 1];
 let pisteet = [];
 let points = 0;
-
-let player1 = document.getElementById("name1");
-let player2 = document.getElementById("name2");
-let player3 = document.getElementById("name3");
-let player4 = document.getElementById("name4");
-let player5 = document.getElementById("name5");
+let tulostus = "";
 
 //Modaalin aukaisu:
 btn.onclick = function(){
@@ -65,8 +58,15 @@ closebtn.onclick = function(){
     upDate();
 }
 
-//Lataa valitun/valitut nopat 
+//Lataa valitun/valitut nopat sekä tulostaa pelaajat+pisteet
 function upDate(){
+
+    let player1 = document.getElementById("name1").value;
+    let player2 = document.getElementById("name2").value;
+    let player3 = document.getElementById("name3").value;
+    let player4 = document.getElementById("name4").value;
+    let player5 = document.getElementById("name5").value;
+
     if (document.getElementById("oneDice").checked){
         area1.style.display="block";
         area2.style.display="none";
@@ -76,27 +76,18 @@ function upDate(){
         area2.style.display="block";
     }
     if (document.getElementById("twoPlay").checked){
-        document.getElementById("results").innerHTML = "Player 1: " + player1 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 2: " + player2 + ", points: " + points;
+        tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points;
     }
     if (document.getElementById("threePlay").checked){
-        document.getElementById("results").innerHTML = "Player 1: " + player1 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 2: " + player2 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 3: " + player3 + ", points: " + points;
+        tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points+ "<br>" + "Player 3: " + player3 + ", points: " + points;
     }
     if (document.getElementById("fourPlay").checked){
-        document.getElementById("results").innerHTML = "Player 1: " + player1 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 2: " + player2 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 3: " + player3 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 4: " + player4 + ", points: " + points;
+        tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points+ "<br>" + "Player 3: " + player3 + ", points: " + points+ "<br>" + "Player 4: " + player4 + ", points: " + points;
     }
     if (document.getElementById("fivePlay").checked){
-        document.getElementById("results").innerHTML = "Player 1: " + player1 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 2: " + player2 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 3: " + player3 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 4: " + player4 + ", points: " + points;
-        document.getElementById("results").innerHTML = "Player 5: " + player5 + ", points: " + points;
+        tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points+ "<br>" + "Player 3: " + player3 + ", points: " + points+ "<br>" + "Player 4: " + player4 + ", points: " + points+ "<br>" + "Player 5: " + player5 + ", points: " + points;
     }
+    document.getElementById("results").innerHTML = tulostus;
 }
 
 //Noppien arpominen:
@@ -104,26 +95,26 @@ function arpoo(){
     if (document.getElementById("twoDice").checked){
         let ekaluku = Math.floor((Math.random() * [images.length]));
         let tokaluku = Math.floor((Math.random() * [images.length]));
-        dices[0] = ekaluku;
-        dices[1] = tokaluku;
-        points = points + ekaluku + 1 + tokaluku +1;
+        //dices[0] = ekaluku;
+       // dices[1] = tokaluku;
         img1.src = `diceimg/${[images[ekaluku]]}`;
         img2.src = `diceimg/${[images[tokaluku]]}`;
-    } else if (document.getElementById("oneDice").checked){
-        let ekaluku = Math.floor((Math.random() * [images.length]));
+        points = points + ekaluku + 1 + tokaluku +1;
+    } 
+    if (document.getElementById("oneDice").checked){
+        ekaluku = Math.floor((Math.random() * [images.length]));
         points = points + ekaluku + 1;
-        img1.src = `diceimg/${[images[ekaluku]]}`;
+        img3.src = `diceimg/${[images[ekaluku]]}`;
     }
     
     upDate();
-    document.getElementById("results").innerHTML=points;
 }
-
+/*
 function laskePisteet(){
     pisteet.push(images[i]);
     for (let i = 0; i < pisteet.length; i++){
         points = points + pisteet[i];
     }
     console.log(points);
-}
+}*/
 

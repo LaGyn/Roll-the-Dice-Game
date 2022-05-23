@@ -9,6 +9,10 @@ body {
     margin:0; 
 }
 
+.container {
+    padding-bottom: 30px;
+}
+
 h1 {
     font-family: 'Smokum', cursive;
     font-size: 70px;
@@ -70,13 +74,13 @@ form {
     padding-bottom: 15px;
 }
 
-.dices {
+#dices {
     margin: auto;
     width: fit-content;
     padding: 40px 0;
 }
 
-.dice {
+#dice {
     margin: auto;
     width: fit-content;
     padding: 40px 0;
@@ -86,10 +90,55 @@ img {
     margin: 30px;
 }
 
-.results {
+.results{
     float:right;
     font-family: 'Special Elite', cursive;
     color:white;
-    text-decoration: solid;
+    line-height: 2.0;
+    text-align: right;
+    position:absolute;
+    right:0;
+    top:450px;
     margin-right: 20px;
+    clear:right;
+}
+
+@media screen and (max-width: 700px){
+
+    img {
+        width:30%;
+    }
+
+    .button {
+        margin:auto;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    #dice, #dices {
+        padding: 10px;
+    }
+
+    .results{
+        font-family: 'Special Elite', cursive;
+        color:white;
+        text-align: center;
+        position:inherit;
+        bottom:0px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+}
+
+@media screen and (min-width:1400px){
+    .results {
+        font-size: larger;
+        text-align: center;
+        width:400px;
+        margin:auto;
+        
+    }
 }
