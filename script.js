@@ -47,6 +47,9 @@ let pisteet = [];
 let points = 0;
 let tulostus = "";
 
+let ekaluku = 0;
+let tokaluku = 0;
+
 //Modaalin aukaisu:
 btn.onclick = function(){
     modal.style.display = "block";
@@ -93,28 +96,40 @@ function upDate(){
 //Noppien arpominen:
 function arpoo(){
     if (document.getElementById("twoDice").checked){
-        let ekaluku = Math.floor((Math.random() * [images.length]));
-        let tokaluku = Math.floor((Math.random() * [images.length]));
-        //dices[0] = ekaluku;
-       // dices[1] = tokaluku;
+        ekaluku = Math.floor((Math.random() * [images.length]));
+        tokaluku = Math.floor((Math.random() * [images.length]));
         img1.src = `diceimg/${[images[ekaluku]]}`;
         img2.src = `diceimg/${[images[tokaluku]]}`;
-        points = points + ekaluku + 1 + tokaluku +1;
+        pisteet.push(ekaluku);
+        pisteet.push(tokaluku);
+        console.log(pisteet);
+        //points = points + ekaluku + 1 + tokaluku +1;
     } 
     if (document.getElementById("oneDice").checked){
         ekaluku = Math.floor((Math.random() * [images.length]));
-        points = points + ekaluku + 1;
         img3.src = `diceimg/${[images[ekaluku]]}`;
+        pisteet.push(ekaluku);
+        console.log(pisteet);
+        //points = points + ekaluku + 1;
     }
-    
     upDate();
+   // laskePisteet();
 }
-/*
+
 function laskePisteet(){
-    pisteet.push(images[i]);
+    let luku = ekaluku + 1;
+    luku = tokaluku + 1;
+    if (luku != 1){
+        pisteet.push(luku);
+    } 
+    else if (luku == 1){
+        points == 0;
+        alert("Hävisit pisteet! Seuraavan pelaajan heittovuoro!");
+    }
     for (let i = 0; i < pisteet.length; i++){
         points = points + pisteet[i];
     }
+    return points;
     console.log(points);
-}*/
+}
 
