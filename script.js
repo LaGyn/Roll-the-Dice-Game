@@ -42,7 +42,28 @@ let area1 = document.getElementById("dice");
 let area2 = document.getElementById("dices");
 
 const images = ['dice1.png', 'dice2.png', 'dice3.png', 'dice4.png', 'dice5.png', 'dice6.png'];
-//const dices = [0, 1];
+let players = [
+    {
+        name: document.getElementById("name1").value,
+        points: 0
+    },
+    {
+        name: document.getElementById("name2").value,
+        points: 0
+    },
+    {
+        name: document.getElementById("name3").value,
+        points: 0
+    },
+    {
+        name: document.getElementById("name4").value,
+        points: 0
+    },
+    {
+        name: document.getElementById("name5").value,
+        points: 0
+    }
+];
 let pisteet = [];
 let points = 0;
 let tulostus = "";
@@ -64,11 +85,26 @@ closebtn.onclick = function(){
 //Lataa valitun/valitut nopat sekä tulostaa pelaajat+pisteet
 function upDate(){
 
-    let player1 = document.getElementById("name1").value;
-    let player2 = document.getElementById("name2").value;
-    let player3 = document.getElementById("name3").value;
-    let player4 = document.getElementById("name4").value;
-    let player5 = document.getElementById("name5").value;
+    let player1 = {
+        name: document.getElementById("name1").value,
+        points: 0
+    }
+    let player2 = {
+        name: document.getElementById("name2").value,
+        points: 0
+    }
+    let player3 = {
+        name: document.getElementById("name3").value,
+        points: 0
+    }
+    let player4 = {
+        name: document.getElementById("name4").value,
+        points: 0
+    }
+    let player5 = {
+        name: document.getElementById("name5").value,
+        points: 0
+    }
 
     if (document.getElementById("oneDice").checked){
         area1.style.display="block";
@@ -79,15 +115,19 @@ function upDate(){
         area2.style.display="block";
     }
     if (document.getElementById("twoPlay").checked){
+        players = [player1, player2];
         tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points;
     }
     if (document.getElementById("threePlay").checked){
+        players = [player1, player2, player3];
         tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points+ "<br>" + "Player 3: " + player3 + ", points: " + points;
     }
     if (document.getElementById("fourPlay").checked){
+        players = [player1, player2, player3, player4];
         tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points+ "<br>" + "Player 3: " + player3 + ", points: " + points+ "<br>" + "Player 4: " + player4 + ", points: " + points;
     }
     if (document.getElementById("fivePlay").checked){
+        players = [player1, player2, player3, player4, player5];
         tulostus = "Player 1: " + player1 + ", points: " + points + "<br>" + "Player 2: " + player2 + ", points: " + points+ "<br>" + "Player 3: " + player3 + ", points: " + points+ "<br>" + "Player 4: " + player4 + ", points: " + points+ "<br>" + "Player 5: " + player5 + ", points: " + points;
     }
     document.getElementById("results").innerHTML = tulostus;
