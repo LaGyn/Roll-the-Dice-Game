@@ -15,8 +15,38 @@ let area1 = document.getElementById("dice");
 let area2 = document.getElementById("dices");
 
 const images = ['dice1.png', 'dice2.png', 'dice3.png', 'dice4.png', 'dice5.png', 'dice6.png'];
-let players = [0,1,2,3,4];
+
+//Pelaajien nimet:
+let name1 = document.getElementById("name1").value;
+let name2 = document.getElementById("name2").value;
+let name3 = document.getElementById("name3").value;
+let name4 = document.getElementById("name4").value;
+let name5 = document.getElementById("name5").value;
+
 let pointArray = [0,1,2,3,4];
+
+let players = [
+    {
+        name: name1,
+        points: 0
+    },
+    {
+        name: name2,
+        points: 0
+    },
+    {
+        name: name3,
+        points: 0
+    },
+    {
+        name: name4,
+        points: 0
+    },
+    {
+        name: name5,
+        points: 0
+    }
+];
 
 let pisteet = [];
 let points = 0;
@@ -38,28 +68,6 @@ closebtn.onclick = function(){
 
 //Lataa valitun/valitut nopat sekä tulostaa pelaajat+pisteet
 function upDate(){
-    players = [
-        {
-            name: document.getElementById("name1").value,
-            points: 0
-        },
-        {
-            name: document.getElementById("name2").value,
-            points: 0
-        },
-        {
-            name: document.getElementById("name3").value,
-            points: 0
-        },
-        {
-            name: document.getElementById("name4").value,
-            points: 0
-        },
-        {
-            name: document.getElementById("name5").value,
-            points: 0
-        }
-    ];
     
     if (document.getElementById("oneDice").checked){
         area1.style.display="block";
