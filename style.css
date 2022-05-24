@@ -104,6 +104,12 @@ img {
     clear:right;
 }
 
+#alertArea {
+    font-family: 'Special Elite', cursive;
+    color:white;
+    text-align: center;
+}
+
 @media screen and (max-width: 700px){
 
     img {
