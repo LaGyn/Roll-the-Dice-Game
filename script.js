@@ -18,7 +18,7 @@ const images = ['dice1.png', 'dice2.png', 'dice3.png', 'dice4.png', 'dice5.png',
 
 //Objekti array:
 let players = [
-    {
+   /* {
         name: name1,
         points: 0
     },
@@ -37,13 +37,14 @@ let players = [
     {
         name: name5,
         points: 0
-    }
+    }*/
 ];
 
 let pisteet = [];
 let points = 0;
 let tulostus = "";
 let vuoro = 0;
+let newPoints = 0;
 let ekaluku = 0;
 let tokaluku = 0;
 
@@ -76,15 +77,29 @@ function upDate(){
         area2.style.display="block";
     }
     if (document.getElementById("twoPlay").checked){
+        players[0]={name: name1, points: 0};
+        players[1]={name: name2, points: 0};
         tulostus = "Player 1: " + players[0].name + ", points: " + players[0].points + "<br>" + "Player 2: " + players[1].name + ", points: " + players[1].points;
     }
     if (document.getElementById("threePlay").checked){
+        players.push({name: name1, points: 0});
+        players.push({name: name2, points: 0});
+        players.push({name: name3, points: 0});
         tulostus = "Player 1: " + players[0].name + ", points: " + players[0].points + "<br>" + "Player 2: " + players[1].name + ", points: " + players[1].points + "<br>" + "Player 3: " + players[2].name + ", points: " + players[2].points;
     }
     if (document.getElementById("fourPlay").checked){
+        players.push({name: name1, points: 0});
+        players.push({name: name2, points: 0});
+        players.push({name: name3, points: 0});
+        players.push({name: name4, points: 0});
         tulostus = "Player 1: " + players[0].name + ", points: " + players[0].points + "<br>" + "Player 2: " + players[1].name + ", points: " + players[1].points + "<br>" + "Player 3: " + players[2].name + ", points: " + players[2].points + "<br>" + "Player 4: " + players[3].name + ", points: " + players[3].points;
     }
     if (document.getElementById("fivePlay").checked){
+        players.push({name: name1, points: 0});
+        players.push({name: name2, points: 0});
+        players.push({name: name3, points: 0});
+        players.push({name: name4, points: 0});
+        players.push({name: name5, points: 0});
         tulostus = "Player 1: " + players[0].name + ", points: " + players[0].points + "<br>" + "Player 2: " + players[1].name + ", points: " + players[1].points + "<br>" + "Player 3: " + players[2].name + ", points: " + players[2].points + "<br>" + "Player 4: " + players[3].name + ", points: " + players[3].points + "<br>" + "Player 5: " + players[4].name + ", points: " + players[4].points;
     }
     document.getElementById("results").innerHTML = tulostus;
@@ -92,6 +107,7 @@ function upDate(){
 
 //Noppien arpominen:
 function roll(){
+    document.getElementById("alertArea").innerHTML = "";
     if (document.getElementById("twoDice").checked){
         ekaluku = Math.floor((Math.random() * [images.length]));
         tokaluku = Math.floor((Math.random() * [images.length]));
@@ -112,28 +128,36 @@ function roll(){
             document.getElementById("alertArea").innerHTML = "You rolled 1 ! Zero points!";
         }
     }
-    upDate();
+   // upDate();
 }
 
 function laskePisteet(){
-    //vuoro = [0,1,2,3,4]; //Pelaajien vuorot players.length  --> vuoron vaihtuminen
     let pituus = pisteet.length;
     for (let i = 0; i < pisteet.length; i++){
         points = points + pisteet[i];
     }
     points = points + pituus;
+    
+    for (i = 1; i = pisteet.length; i++){
+        pisteet.pop();
+    }
     players[vuoro].points = points;
+    newPoints = points;
+    upDate(); 
+    vuoronVaihto();
+}
+
+function vuoronVaihto(){
+    points = 0;
     if (vuoro < players.length){
         vuoro++;
     }
-    else if (vuoro > players.length){
-        vuoro== 0;
+    else if (vuoro = players.length){
+        vuoro == 0;
     }
-    points == 0;
-    upDate(); 
 }
 
 function stopRoll(){
     laskePisteet();
-    document.getElementById("alertArea").innerHTML = "Your points: " + points;
+    document.getElementById("alertArea").innerHTML = "Your points: " + newPoints;
 }
