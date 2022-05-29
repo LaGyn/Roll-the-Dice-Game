@@ -135,7 +135,6 @@ function laskePisteet(){
 }
 
 function vuoronVaihto(){
-    
     let length = 0;
     if (document.getElementById("twoPlay").checked){
         length = players.length - 3; // =2
@@ -154,8 +153,8 @@ function vuoronVaihto(){
         vuoro = 0;
     }
     points = players[vuoro].points;
-    return vuoro;
-    upDate();
+   // return vuoro;
+   // upDate();
 }
 
 function stopRoll(){
