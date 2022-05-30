@@ -106,6 +106,7 @@ function roll(){
         if (ekaluku == tokaluku){ //Tuplat, jos luvut ovat samat lisätään luvut ylimääräisen kerran taulukkoon
             pisteet.push(ekaluku);
             pisteet.push(tokaluku);
+            document.getElementById("alertArea").innerHTML = "Doubles! Double points!";
         }
         if (ekaluku == tokaluku){
             tuplat++;
