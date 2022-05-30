@@ -1,6 +1,6 @@
 
-// Nappulat:
 let modal = document.getElementById("myModal");
+// Napit:
 let btn = document.getElementById("startbtn");
 let closebtn = document.getElementById("closeModal");
 let play = document.getElementById("roll");
@@ -14,6 +14,7 @@ let img3 = document.getElementById("dice3");
 let area1 = document.getElementById("dice");
 let area2 = document.getElementById("dices");
 
+//Arvottavat nopat:
 const images = ['dice1.png', 'dice2.png', 'dice3.png', 'dice4.png', 'dice5.png', 'dice6.png'];
 
 //Objekti array:
@@ -95,15 +96,27 @@ function upDate(){
 function roll(){
     document.getElementById("alertArea").innerHTML = "";
     if (document.getElementById("twoDice").checked){
-        ekaluku = Math.floor((Math.random() * [images.length]));
+        ekaluku = Math.floor((Math.random() * [images.length])); //Arpoo luvun (0-5)
         tokaluku = Math.floor((Math.random() * [images.length]));
-        img1.src = `diceimg/${[images[ekaluku]]}`;
+        img1.src = `diceimg/${[images[ekaluku]]}`; //Tulostaa arvotun nopan paikallensa
         img2.src = `diceimg/${[images[tokaluku]]}`;
-        pisteet.push(ekaluku);
+        pisteet.push(ekaluku); //Lisää arvotun luvun taulukkoon (0-5)
         pisteet.push(tokaluku);
-       /* if (ekaluku == 0 || tokaluku == 0){
+        if (ekaluku == tokaluku){ //Tuplat, jos luvut ovat samat lisätään luvut ylimääräisen kerran taulukkoon
+            pisteet.push(ekaluku);
+            pisteet.push(tokaluku);
+        }
+        if (ekaluku == 0 && tokaluku == 0){
+            pisteet.push(20); //Tupla ykköset. Lisätään taulukkoon 20, sillä riviltä 103,104,106,107 tulee jo yhdet pisteet [0,0,0,0,20] (+pisteet.length) = 25pistettä
+        }
+        else if (ekaluku == 0 || tokaluku == 0){ //Jos jompikumpi on ykkönen niin ei tule pisteitä.
             document.getElementById("alertArea").innerHTML = "You rolled 1 ! Zero points!";
-            delete pisteet[pisteet.length];*/
+            for (i = 1; i = pisteet.length; i++){
+                pisteet.pop();//Tyhjennetään taulukko
+            }
+            document.getElementById("roll").style.opacity = "0.6";
+            document.getElementById("roll").style.pointerEvents = "none"; //Tehdään napista kelvoton käyttää
+        }
     }
         
     if (document.getElementById("oneDice").checked){
@@ -112,24 +125,32 @@ function roll(){
         pisteet.push(ekaluku);
         if (ekaluku == 0){
             document.getElementById("alertArea").innerHTML = "You rolled 1 ! Zero points!";
+            for (i = 1; i = pisteet.length; i++){
+                pisteet.pop();
+            }
+            document.getElementById("roll").style.opacity = "0.6";
+            document.getElementById("roll").style.pointerEvents = "none";
         }
     }
-   // upDate();
 }
 
 function laskePisteet(){
     let pituus = pisteet.length;
-    for (let i = 0; i < pisteet.length; i++){
+    for (let i = 0; i < pisteet.length; i++){ //Käydään taulukko läpi ja lasketaan siinä olevat pisteet yhteen.
         points = points + pisteet[i];
     }
-    points = points + pituus;
-    
+    points = points + pituus; //Koska pisteet ovat 0-5 eli yhtä lukemaa oikeita pisteitä pienemmät, lisätään taulukon pituus pisteisiin näin saadaan jokaiselle alkoille lisäpinna.
     for (i = 1; i = pisteet.length; i++){
-        pisteet.pop();
+        pisteet.pop(); //Tyhjennetään taulukko jotta seuraava pelaaja aloittaa nollasta
     }
-    //points = points + newPoints;
-    players[vuoro].points = points;
+    players[vuoro].points = points; //Osoitetaan pisteet oikealle pelaajalle
     newPoints = points;
+    if (points >= 100){ //Jos pisteitä on sata tai yli, tulee voitto
+        document.getElementById("alertArea").innerHTML = points + " points! " + players[vuoro].name + " you win!!";
+    }
+    else {
+        document.getElementById("alertArea").innerHTML = "Your points: " + newPoints;
+    }
     upDate(); 
     vuoronVaihto();
 }
@@ -137,27 +158,27 @@ function laskePisteet(){
 function vuoronVaihto(){
     let length = 0;
     if (document.getElementById("twoPlay").checked){
-        length = players.length - 3; // =2
+        length = players.length - 3; // == 2, players.length on alunperin 5.
     }
     if (document.getElementById("threePlay").checked){
-        length = players.length - 2;
+        length = players.length - 2; // == 3
     }
     if (document.getElementById("fourPlay").checked){
-        length = players.length -1;
+        length = players.length -1; // == 4
     }
     
     if (vuoro < length){
-        vuoro++;
+        vuoro++; //Kasvatetaan vuoroa
     }
-    if (vuoro >= length){
+    if (vuoro >= length){ //Jos vuoro on suurempi tai yhtäsuuri kuin pelaajien määrä, vuoro asettuu taas nollaksi
         vuoro = 0;
     }
-    points = players[vuoro].points;
-   // return vuoro;
-   // upDate();
+    points = players[vuoro].points; //Seuraavat pisteet ovat seuraavalle pelaajalle
+    upDate();
 }
 
 function stopRoll(){
     laskePisteet();
-    document.getElementById("alertArea").innerHTML = "Your points: " + newPoints;
+    document.getElementById("roll").style.opacity = "1"; //Asetetaan pelausnappi taas toimimaan
+    document.getElementById("roll").style.pointerEvents = "auto";
 }
