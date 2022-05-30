@@ -1,4 +1,18 @@
 -pelin aloitus modal komponentilla: 
-    Kysytään monta noppaa otetaan käyttöön, montako pelaajaa ja heidän nimet
-    Eli pitää olla jokin aloitus nappi.
+    Aloitus-nappi joka avaa modaalin.
+    Kysytään monta noppaa otetaan käyttöön, montako pelaajaa ja heidän nimet.
+    Pelaajia on oltava vähintään kaksi ja enintään viisi.
+    
 -Nappi joka arpoo nopat.
+-Nappi joka lopettaa pelaajan vuoron.
+
+Peliä voidaan pelata yhdellä tai kahdella nopalla.
+Pisteiden lasku pelaajille, uudet pisteet lasketaan edellisen kierroksen pitelukemaan mukaan.
+Ykkösen heitosta ei tule vuorolla lainkaan pisteitä ja vuoro siirtyy seuraavalle. 
+Tällöin roll-nappi on disabled joten pelaaja ei pysty heittämään noppaa uudestaan vaan joutuu painamaan stop nappia,joka lopettaa vuoron ja laskee pisteet.
+Vuoro lopetetaan aina stop-napppia painamalla. Silloin myös lasketaan pisteet sekä ohjelma siirtää vuoron seuraavalle.
+Pelissä oltava pistetaulukko nimineen, sekä alue johon tulostuu mikäli heitti ykkösen eikä saanut pisteitä, voittaja yms.
+Jos käytössä on kaksi noppaa, ja heitettyjen noppien silmäluvut ovat samat, saa tupla pisteet.
+Jos omalla vuorolla heittää yhteensä kolme kertaa tuplat, menettää peli vuoron seuraavalle eikä saa pisteitä.
+Jos heittää ykköset saa pisteitä 25.
+Se joka saavuttaa ensimmäisenä 100 tai yli pistettä, on voittaja.
