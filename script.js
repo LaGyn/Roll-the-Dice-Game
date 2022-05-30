@@ -170,7 +170,7 @@ function laskePisteet(){
 
 function vuoronVaihto(){
     let length = 0;
-    tuplat = 0;
+    tuplat = 0; //Nollataan tuplien mahdollinen määrä kun alkaa uusi kierros
     if (document.getElementById("twoPlay").checked){
         length = players.length - 3; // == 2, players.length on alunperin 5.
     }
