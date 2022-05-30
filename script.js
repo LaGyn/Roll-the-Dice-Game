@@ -48,6 +48,7 @@ let vuoro = 0;
 let newPoints = 0;
 let ekaluku = 0;
 let tokaluku = 0;
+let tuplat = 0;
 
 //Modaalin aukaisu:
 btn.onclick = function(){
@@ -106,8 +107,19 @@ function roll(){
             pisteet.push(ekaluku);
             pisteet.push(tokaluku);
         }
+        if (ekaluku == tokaluku){
+            tuplat++;
+        }
+        if (tuplat == 3){
+            document.getElementById("alertArea").innerHTML = "Three doubles! Zero points!";
+            for (i = 1; i = pisteet.length; i++){
+                pisteet.pop();//Tyhjennetään taulukko
+            }
+            document.getElementById("roll").style.opacity = "0.6";
+            document.getElementById("roll").style.pointerEvents = "none";//Tehdään napista kelvoton käyttää
+        }
         if (ekaluku == 0 && tokaluku == 0){
-            pisteet.push(20); //Tupla ykköset. Lisätään taulukkoon 20, sillä riviltä 103,104,106,107 tulee jo yhdet pisteet [0,0,0,0,20] (+pisteet.length) = 25pistettä
+            pisteet.push(20); //Tupla ykköset. Lisätään taulukkoon 20, sillä riviltä 104,105,107,108 tulee jo yhdet pisteet [0,0,0,0,20] (+pisteet.length) = 25pistettä
         }
         else if (ekaluku == 0 || tokaluku == 0){ //Jos jompikumpi on ykkönen niin ei tule pisteitä.
             document.getElementById("alertArea").innerHTML = "You rolled 1 ! Zero points!";
@@ -115,7 +127,7 @@ function roll(){
                 pisteet.pop();//Tyhjennetään taulukko
             }
             document.getElementById("roll").style.opacity = "0.6";
-            document.getElementById("roll").style.pointerEvents = "none"; //Tehdään napista kelvoton käyttää
+            document.getElementById("roll").style.pointerEvents = "none"; 
         }
     }
         
@@ -143,6 +155,7 @@ function laskePisteet(){
     for (i = 1; i = pisteet.length; i++){
         pisteet.pop(); //Tyhjennetään taulukko jotta seuraava pelaaja aloittaa nollasta
     }
+    
     players[vuoro].points = points; //Osoitetaan pisteet oikealle pelaajalle
     newPoints = points;
     if (points >= 100){ //Jos pisteitä on sata tai yli, tulee voitto
@@ -157,6 +170,7 @@ function laskePisteet(){
 
 function vuoronVaihto(){
     let length = 0;
+    tuplat = 0;
     if (document.getElementById("twoPlay").checked){
         length = players.length - 3; // == 2, players.length on alunperin 5.
     }
