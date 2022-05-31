@@ -175,11 +175,14 @@ function vuoronVaihto(){
     if (document.getElementById("twoPlay").checked){
         length = players.length - 3; // == 2, players.length on alunperin 5.
     }
-    if (document.getElementById("threePlay").checked){
+    else if (document.getElementById("threePlay").checked){
         length = players.length - 2; // == 3
     }
-    if (document.getElementById("fourPlay").checked){
+    else if (document.getElementById("fourPlay").checked){
         length = players.length -1; // == 4
+    }
+    else if (document.getElementById("fivePlay").checked){
+        length = players.length;
     }
     
     if (vuoro < length){
